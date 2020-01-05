@@ -1,0 +1,14 @@
+* {
+    color: #000;
+    font-family: 'Century Gothic';
+}
+.styled-font {
+    font-family: 'Pacifico', cursive !important;
+}
+
+
+.btn-fix {
+    padding: 0;
+    border: none;
+    white-space: normal;
+}

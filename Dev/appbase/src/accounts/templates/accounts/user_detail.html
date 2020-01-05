@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+
+{% block body %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h1 class="styled-font mb-4">Hello !! {{user.first_name}}</h1>
+        {{user.id}}
+
+    </div>
+</div>
+<br />
+{% endblock body %}
