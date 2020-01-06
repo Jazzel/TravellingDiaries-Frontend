@@ -7,22 +7,24 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            </ul>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link">Hello {{request.user}} !</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'accounts:profile' %}">My Profile</a>
                 </li>
-            </ul>
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="/accounts/login">Sign In</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
                 </li>
+                {% endif %}
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
     </nav>
 </div>

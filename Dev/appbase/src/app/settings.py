@@ -39,9 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    # 'django_countries',
+    'django.contrib.humanize',
+    'cities_light',
     # ? Apps
     'accounts',
     'reviews',
+    'destinations',
 ]
 
 MIDDLEWARE = [
