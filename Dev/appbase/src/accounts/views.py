@@ -11,4 +11,5 @@ class ProfileView(LoginRequiredMixin, TemplateView):
     def get_queryset(self):
         queryset = User.objects.get(username=self.request.user.username)
         return queryset
-    template_name = 'accounts/user_detail.html'
+    # template_name = 'accounts/user_detail.html'
+    template_name = 'admin/dash_base.html'
