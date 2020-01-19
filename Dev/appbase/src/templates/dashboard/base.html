@@ -1,0 +1,40 @@
+{% extends 'dashboard/base_template.html' %}
+{% load i18n static %}
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+{% block admin %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-plain">
+            <div class="card-header">
+                {% block breadcrumbs %}
+                <div class="breadcrumbs styled-font text-white h1">
+                    {% if head %} {{ head }}{% endif %}
+                    {% if title %} &rsaquo; {{ title }}{% endif %}
+                </div>
+                <div>
+                    <hr class="bg-white" />
+                </div>
+                {% endblock %}
+                {% block messages %}
+                {% if messages %}
+                <ul class="messagelist">{% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                        {{ message|capfirst }}</li>
+                        {% endfor %}</ul>
+                {% endif %}
+                {% endblock messages %}
+            </div>
+            <div class="card-body">
+                <div>
+                    <div id="content" class="{% block coltype %}colM{% endblock %}">
+                        {% block content %}
+                        <!-- ! Body -->
+                        {% endblock %}
+                        <br class="clear">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock admin %}
