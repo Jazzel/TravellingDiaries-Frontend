@@ -22,7 +22,8 @@
             $sidebar = $('.sidebar');
             $navbar = $('.navbar');
             $main_panel = $('.main-panel');
-
+            $cards = $('.delete-container');
+            $btns = $('.buttons');
             $full_page = $('.full-page');
 
             $sidebar_responsive = $('body > .navbar-collapse');
@@ -58,6 +59,45 @@
                 if ($main_panel.length != 0) {
                     $main_panel.attr('data', new_color);
                 }
+
+                if (new_color == 'primary') {
+                    $cards.removeClass('bg-primary');
+                    $cards.removeClass('bg-info');
+                    $cards.removeClass('bg-success');
+                    $cards.addClass('bg-primary');
+                }
+                if (new_color == 'blue') {
+                    $cards.removeClass('bg-primary');
+                    $cards.removeClass('bg-info');
+                    $cards.removeClass('bg-success');
+                    $cards.addClass('bg-info');
+                }
+                if (new_color == 'green') {
+                    $cards.removeClass('bg-primary');
+                    $cards.removeClass('bg-info');
+                    $cards.removeClass('bg-success');
+                    $cards.addClass('bg-success');
+                }
+
+                if (new_color == 'primary') {
+                    $btns.removeClass('btn-primary');
+                    $btns.removeClass('btn-info');
+                    $btns.removeClass('btn-success');
+                    $btns.addClass('btn-primary');
+                }
+                if (new_color == 'blue') {
+                    $btns.removeClass('btn-primary');
+                    $btns.removeClass('btn-info');
+                    $btns.removeClass('btn-success');
+                    $btns.addClass('btn-info');
+                }
+                if (new_color == 'green') {
+                    $btns.removeClass('btn-primary');
+                    $btns.removeClass('btn-info');
+                    $btns.removeClass('btn-success');
+                    $btns.addClass('btn-success');
+                }
+
 
                 if ($full_page.length != 0) {
                     $full_page.attr('filter-color', new_color);

@@ -7,11 +7,23 @@
         <div class="card card-plain">
             <div class="card-header">
                 {% block breadcrumbs %}
-                <div class="breadcrumbs styled-font text-white h1">
-                    {% if head %} {{ head }}{% endif %}
-                    {% if title %} &rsaquo; {{ title }}{% endif %}
+                <div class="row">
+                    <div class="col-10">
+                        <div class="breadcrumbs styled-font">
+                            <h1>{% if head %} {{ head }}{% endif %}
+                                {% if title %} &rsaquo; {{ title }}{% endif %}</h1>
+                        </div>
+                    </div>
+
+                    {% if title in 'List' %}
+                    <div class="col-2">
+                        <a class="float-right btn buttons btn-fill btn-primary" href="add/"><i
+                                class="fa fa-plus"></i></a>
+                    </div>
+                    {% endif %}
                 </div>
-                <div>
+
+                <div class="mt-0 pt-0">
                     <hr class="bg-white" />
                 </div>
                 {% endblock %}

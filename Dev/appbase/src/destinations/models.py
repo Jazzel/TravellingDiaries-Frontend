@@ -11,3 +11,5 @@ class Destination(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE, default=0)
 
     # def select_city(self, country):
+    def __str__(self):
+        return self.name
