@@ -17,8 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from . views import (SignUpView, DashboardView)
-
+from .views import (SignUpView, DashboardView)
 from . import views
 
 urlpatterns = [
@@ -26,6 +25,7 @@ urlpatterns = [
     path('', views.index, name="home"),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('reviews/', include('reviews.urls', namespace='reviews')),
+    path('reviews-api/', include('reviews.api.urls', namespace='reviews-api')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('signup/', SignUpView.as_view(), name='signup'),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),

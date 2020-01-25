@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     # 'django_countries',
+    'rest_framework',
     'django.contrib.humanize',
     'cities_light',
     # ? Apps
