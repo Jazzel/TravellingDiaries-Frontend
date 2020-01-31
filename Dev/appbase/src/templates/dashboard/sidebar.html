@@ -19,18 +19,19 @@
                 </a>
 
             </li>
+            <li class="{% if head == 'home' %}active{% endif %}">
+                <a href="{% url 'destinations:list' %}">
+                    <i class="tim-icons icon-square-pin"></i>
+                    <p>Destinations</p>
+                </a>
+            </li>
             <li class="{% if head == 'Reviews' %}active{% endif %}">
                 <a href="{% url 'reviews:list' %}">
                     <i class="tim-icons icon-chart-bar-32"></i>
                     <p>Reviews</p>
                 </a>
             </li>
-            <li class="{% if head == 'home' %}active{% endif %}">
-                <a href="./icons.html">
-                    <i class="tim-icons icon-atom"></i>
-                    <p>Icons</p>
-                </a>
-            </li>
+
 
             <li class="{% if head == 'home' %}active{% endif %}">
                 <a href="./notifications.html">

@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="home"),
     path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('destinations/', include('destinations.urls',
+                                  namespace='destinations')),
     path('reviews/', include('reviews.urls', namespace='reviews')),
     path('reviews-api/', include('reviews.api.urls', namespace='reviews-api')),
     path('accounts/', include('django.contrib.auth.urls')),

@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "appbase\\Scripts\\python.exe",
+    "python.pythonPath": "/home/jazz/anaconda3/bin/python",
     "workbench.colorCustomizations": {
         "activityBar.background": "#5b1117",
         "activityBar.activeBorder": "#1b6b14",

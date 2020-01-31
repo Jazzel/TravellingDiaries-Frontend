@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import (ReviewListView, ReviewCreateView,
-                    ReviewUpdateView, ReviewDeleteView, ReviewDetailView)
-from django.contrib.auth import views as auth_views
+from .views import (ReviewListView, ReviewCreateView, ReviewUpdateView,
+                    ReviewDeleteView, ReviewDetailView)
 
 app_name = 'reviews'
 
@@ -12,5 +11,4 @@ urlpatterns = [
     path('delete/<int:pk>/', ReviewDeleteView.as_view(), name='delete'),
     path('details/<int:pk>/', ReviewDetailView.as_view(), name='details'),
     # path('profile/', auth_views..as_view(), name='profile'),
-
 ]
