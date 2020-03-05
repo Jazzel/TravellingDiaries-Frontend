@@ -1,0 +1,71 @@
+<div class="sidebar">
+    <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+    -->
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="javascript:void(0)" class="simple-text logo-mini  styled-font">
+                TD
+            </a>
+            <a href="javascript:void(0)" class="simple-text logo-normal styled-head">
+                TravellingDiaries
+            </a>
+        </div>
+        <ul class="nav">
+            {% comment %} <li class="{% if head == 'Dashboard' %}active{% endif %}">
+                <a href="{% url 'dashboard' %}">
+                    <i class="tim-icons icon-chart-pie-36"></i>
+                    <p>Dashboard</p>
+                </a>
+
+            </li> {% endcomment %}
+            <li class="{% if head in 'User Profile' %}active {% endif %} ">
+                <a href="{% url 'account:profile' %}">
+                    <i class="tim-icons icon-single-02"></i>
+                    <p>My Profile</p>
+                </a>
+            </li>
+            <li class="{% if head == 'Destinations' %}active{% endif %}">
+                <a href="{% url 'destinations:list' %}">
+                    <i class="tim-icons icon-square-pin"></i>
+                    <p>Destinations</p>
+                </a>
+            </li>
+
+            <li class="{% if head == 'Reviews' %}active{% endif %}">
+                <a href="{% url 'reviews:list' %}">
+                    <i class="tim-icons icon-chat-33"></i>
+                    <p>Reviews</p>
+                </a>
+            </li>
+            {% if request.user.is_superuser %}
+            <li class="{% if head in 'Users' %}active {% endif %} ">
+                <a href="{% url 'account:users' %}">
+                    <i class="tim-icons icon-bullet-list-67"></i>
+                    <p>Users</p>
+                </a>
+            </li>
+            <li class="{% if head in 'User Activity' %}active {% endif %} ">
+                <a href="{% url 'account:user_log' %}">
+                    <i class="tim-icons icon-chart-bar-32"></i>
+                    <p>User Activity</p>
+                </a>
+            </li>
+            {% endif %}
+
+
+            <!-- <li class="{% if head == 'home' %}active{% endif %}">
+                <a href="./rtl.html">
+                    <i class="tim-icons icon-world"></i>
+                    <p>RTL Support</p>
+                </a>
+            </li> -->
+            <li class="active-pro {% if nbar == 'home' %}active{% endif %}">
+                <a href="{% url 'admin:index' %}">
+                    <i class="tim-icons icon-spaceship"></i>
+                    <p>Switch to default admin</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

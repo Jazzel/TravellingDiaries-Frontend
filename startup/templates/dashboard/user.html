@@ -1,0 +1,73 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block graph %}
+<div class="panel-header panel-header-sm">
+</div>
+{% endblock graph %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <div class="card shadow-lg">
+      <div class="card-header">
+        <p class="title h3">Edit Profile</p>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-5 pr-1">
+            <div class="form-group">
+              <label>Application (disabled)</label>
+              <input type="text" class="form-control text-light" disabled="" placeholder="Application"
+                value="TravellingDiaries">
+            </div>
+          </div>
+          <div class="col-md-5 px-1">
+            <div class="form-group">
+              <label>Username</label>
+              <input type="text" class="form-control text-light" disabled="" placeholder="Username"
+                value="{{user.username}}">
+            </div>
+          </div>
+        </div>
+        <form class="w-100" method="POST" {% if form_id %} id='{{ form_id }}' {% endif %} enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ contact_form|crispy }}
+          {{ profile_form }}
+          <input class="btn buttons btn-primary w-100 mt-3" type="submit" value="Update Profile">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card  shadow-lg card-user">
+      <div class="image">
+        <img src="{% static 'assets/img/bg5.jpg' %}" alt="...">
+      </div>
+      <div class="card-body">
+        <div class="author">
+          <a class="text-primary">
+            <img class="avatar border-gray" src="/media/{{request.user.profile.image}}" alt="...">
+            <h5 class="title h1">{{user.first_name}} {{user.last_name}}</h5>
+          </a>
+          <p class="description">
+            @{{user.username}}<br>{{user.email}}
+          </p>
+        </div>
+      </div>
+      <hr>
+      <div class="button-container">
+        <div class="container p-3">
+          {{user.profile.social}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>showData();
+
+</script>
+
+{% endblock scripts %}

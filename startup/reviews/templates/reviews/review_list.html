@@ -1,0 +1,42 @@
+{% extends 'dashboard/base.html' %}
+
+
+
+{% block content %}
+<div class="card shadow-lg">
+    <div class="card-body">
+        <table class="table table-striped table-inverse">
+            <thead class=" text-primary">
+                <tr>
+                    <th>Given By</th>
+                    <th>Destination</th>
+                    <th>Rating</th>
+                    <th>Type</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for review in object_list %}
+                <tr>
+                    <td>{{ review.user }}</td>
+                    <td>{{ review.destination }}</td>
+                    <td>{{ review.get_rating_display }}</td>
+                    <td>{{ review.get_type_display }}</td>
+                    <td><a href="{% url 'reviews:details' pk=review.id %}"
+                            class="pt-1 btn btn-primary buttons btn-sm ml-1 mr-1"><i
+                                class="tim-icons icon-zoom-split"></i></a> |
+                        <a href="{% url 'reviews:edit' pk=review.id %}"
+                            class="pt-1 btn btn-success btn-sm font-weight-900 ml-1 mr-1"><i
+                                class="tim-icons icon-pencil font-weight-900"></i></a> |
+                        <a href="{% url 'reviews:delete' pk=review.id %}"
+                            class=" ml-1 mr-1 pt-1 btn btn-danger btn-sm"><i
+                                class="tim-icons icon-simple-remove font-weight-900"></i></a></td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+{% endblock content %}

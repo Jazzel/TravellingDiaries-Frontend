@@ -1,0 +1,38 @@
+<div class="card text-white {{shadow}} delete-container bg-primary" id="delete_container">
+    <div class="card-body">
+        <dl>
+            <dt class="font-weight-bolder">Review By:</dt>
+            <dd class="ml-2">{{object.user}}</dd>
+        </dl>
+        <dl>
+            <dt class="font-weight-bolder">Destination:</dt>
+            <dd class="ml-2">{{object.destination.name}}</dd>
+        </dl>
+        <dl>
+            <dt class="font-weight-bolder">Destination Country:</dt>
+            <dd class="ml-2">{{object.destination.country}}</dd>
+        </dl>
+        <dl>
+            <dt class="font-weight-bolder">Destination City:</dt>
+            <dd class="ml-2">{{object.destination.city}}</dd>
+        </dl>
+        <dl>
+            <dt class="font-weight-bolder">Destination Type:</dt>
+            <dd class="ml-2">{{object.get_type_display}}</dd>
+        </dl>
+        <dl>
+            <dt class="font-weight-bolder">Destination Rating:</dt>
+            <dd class="ml-2">{{object.get_rating_display}}</dd>
+        </dl>
+        <dl>
+            <dt class="font-weight-bolder">Comments:</dt>
+            <dd class="ml-2">
+                {% if object.comments %}
+                {{object.comments}}
+                {% else %}
+                No comments
+                {% endif %}
+            </dd>
+        </dl>
+    </div>
+</div>

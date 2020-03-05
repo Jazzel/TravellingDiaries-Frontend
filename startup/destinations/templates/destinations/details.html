@@ -1,0 +1,25 @@
+<div class="card text-white {{shadow}} delete-container bg-primary" id="delete_container">
+    <div class="card-body">
+        <dl>
+            <dt class="font-weight-bolder">Destination:</dt>
+            <dd class="ml-2">{{object.name}}</dd>
+        </dl>
+        <dl>
+            <dt class="font-weight-bolder">Location:</dt>
+            <dd class="ml-2">{{object.city}}</dd>
+        </dl>
+        <dl>
+            <dt class="font-weight-bolder">Description:</dt>
+            <dd class="ml-2">
+                {% if object.description %}
+                {{object.description}}
+                {% else %}
+                No description
+                {% endif %}
+            </dd>
+        </dl>
+        <dl>
+            <dt>Reviews ({{object.reviews}})</dt>
+        </dl>
+    </div>
+</div>
