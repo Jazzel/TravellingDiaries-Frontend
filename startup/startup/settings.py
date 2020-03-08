@@ -58,6 +58,10 @@ INSTALLED_APPS = [
     'packages',
     'transport',
     'rentals',
+    'diary',
+    'groups',
+    'post',
+
 ]
 
 SOCIALACCOUNT_PROVIDERS = {

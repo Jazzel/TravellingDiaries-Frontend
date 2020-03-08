@@ -19,6 +19,7 @@ class PackageManager(models.Manager):
 
 class Package(models.Model):
     name = models.CharField(max_length=250)
+    # TODO ::
     liked = models.ManyToManyField(
         settings.AUTH_USER_MODEL, blank=True, related_name='package_liked')
     created = models.DateTimeField(auto_now_add=True)

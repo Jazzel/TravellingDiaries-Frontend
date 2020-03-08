@@ -19,6 +19,8 @@ class HotelManager(models.Manager):
 
 class Hotel(models.Model):
     name = models.CharField(max_length=250)
+    from cities_light.models import City, Country
+    city = models.ForeignKey(City, on_delete=models.CASCADE, default=0)
     location = models.URLField()
     amenities = models.ManyToManyField(Amenity)
     hotel_class = models.CharField(max_length=50)
@@ -30,6 +32,7 @@ class Hotel(models.Model):
         settings.AUTH_USER_MODEL, blank=True, related_name='hotel_liked')
     website = models.URLField(blank=True)
     contact = PhoneNumberField(blank=True, unique=True)
+    email = models.EmailField(blank=True, unique=True)
     certificates = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True, blank=True)

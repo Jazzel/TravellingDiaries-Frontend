@@ -11,6 +11,7 @@ TYPE = (
 
 class Transport(models.Model):
     name = models.CharField(max_length=250)
+    # TODO ::
     type = models.CharField(choices=TYPE, max_length=50)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True, blank=True)

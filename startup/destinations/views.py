@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from django.views.generic import (CreateView, UpdateView, DeleteView,
                                   DetailView, ListView)
-from .models import Destination
+# from .models import Destination
 from startup.mixins import FormUserNeededMixin
 from .forms import DestinationModelForm
 # Create your views here.
 
 
 class DestinationListView(ListView):
-    model = Destination
+    # model = Destination
 
     def get_context_data(self, **kwargs):
         context = super(DestinationListView, self).get_context_data(**kwargs)
@@ -29,7 +29,7 @@ class DestinationCreateView(CreateView):
 
 
 class DestinationDetailView(DetailView):
-    model = Destination
+    # model = Destination
 
     def get_context_data(self, **kwargs):
         context = super(DestinationDetailView, self).get_context_data(**kwargs)
@@ -39,7 +39,7 @@ class DestinationDetailView(DetailView):
 
 
 class DestinationUpdateView(UpdateView):
-    model = Destination
+    # model = Destination
     form_class = DestinationModelForm
     template_name = "destinations/destination_edit.html"
 
@@ -51,7 +51,7 @@ class DestinationUpdateView(UpdateView):
 
 
 class DestinationDeleteView(DeleteView):
-    model = Destination
+    # model = Destination
     success_url = 'destinations:list'
 
     def get_context_data(self, **kwargs):

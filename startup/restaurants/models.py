@@ -18,6 +18,8 @@ class RestaurantManager(models.Manager):
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=250)
+    from cities_light.models import City, Country
+    city = models.ForeignKey(City, on_delete=models.CASCADE, default=0)
     location = models.URLField()
     amenities = models.ManyToManyField(Amenity)
     hotel_class = models.CharField(max_length=50)
