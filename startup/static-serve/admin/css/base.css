@@ -16,12 +16,12 @@ body {
 /* LINKS */
 
 a:link, a:visited {
-    color: #447e9b;
+    color: #565668;
     text-decoration: none;
 }
 
 a:focus, a:hover {
-    color: #036;
+    color: #1e1e2e;
 }
 
 a:focus {
@@ -449,7 +449,7 @@ select[multiple] {
 /* FORM BUTTONS */
 
 .button, input[type=submit], input[type=button], .submit-row input, a.button {
-    background: #79aec8;
+    background: #53536d;
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
@@ -464,7 +464,7 @@ a.button {
 .button:active, input[type=submit]:active, input[type=button]:active,
 .button:focus, input[type=submit]:focus, input[type=button]:focus,
 .button:hover, input[type=submit]:hover, input[type=button]:hover {
-    background: #609ab6;
+    background: #1e1e2e;
 }
 
 .button[disabled], input[type=submit][disabled], input[type=button][disabled] {
@@ -475,13 +475,13 @@ a.button {
     float: right;
     border: none;
     font-weight: 400;
-    background: #417690;
+    background: #1e1e2e;
 }
 
 .button.default:active, input[type=submit].default:active,
 .button.default:focus, input[type=submit].default:focus,
 .button.default:hover, input[type=submit].default:hover {
-    background: #205067;
+    background: #53536d;
 }
 
 .button[disabled].default,
@@ -522,7 +522,7 @@ input[type=button][disabled].default {
     font-weight: 400;
     font-size: 13px;
     text-align: left;
-    background: #79aec8;
+    background: #1e1e2e;
     color: #fff;
 }
 
@@ -556,7 +556,7 @@ ul.messagelist li {
 }
 
 ul.messagelist li.warning {
-    background: #ffc url(../img/icon-alert.svg) 40px 14px no-repeat;
+    background: #fff url(../img/icon-alert.svg) 40px 14px no-repeat;
     background-size: 14px auto;
 }
 
@@ -625,7 +625,7 @@ td ul.errorlist li {
 }
 
 div.system-message {
-    background: #ffc;
+    background: #fff;
     margin: 10px;
     padding: 6px 8px;
     font-size: .8em;
@@ -646,7 +646,7 @@ div.system-message p.system-message-title {
 /* BREADCRUMBS */
 
 div.breadcrumbs {
-    background: #79aec8;
+    background: #53536d !important;
     padding: 10px 40px;
     border: none;
     font-size: 14px;
@@ -659,7 +659,7 @@ div.breadcrumbs a {
 }
 
 div.breadcrumbs a:focus, div.breadcrumbs a:hover {
-    color: #c4dce8;
+    color: #53536d;
 }
 
 /* ACTION ICONS */
@@ -835,7 +835,7 @@ table#change-history tbody th {
     align-items: center;
     padding: 10px 40px;
     background-color: #1e1e2e !important;
-    color: #ffc;
+    color: #fff;
     overflow: hidden;
 }
 
@@ -860,7 +860,7 @@ table#change-history tbody th {
 }
 
 #branding h1, #branding h1 a:link, #branding h1 a:visited {
-    color: #f5dd5d;
+    color: #fff;
 }
 
 #branding h2 {
@@ -868,7 +868,7 @@ table#change-history tbody th {
     font-size: 14px;
     margin: -8px 0 8px 0;
     font-weight: normal;
-    color: #ffc;
+    color: #fff;
 }
 
 #branding a:hover {

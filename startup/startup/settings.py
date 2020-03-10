@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'cities_light',
     'phonenumber_field',
+    'rest_framework',
     # ? apps
     'accounts',
     'reviews',

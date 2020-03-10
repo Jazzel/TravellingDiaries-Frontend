@@ -1,3 +1,4 @@
+from destinations.models import Destination
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
@@ -23,36 +24,35 @@ class Post(models.Model):
     user = models.ForeignKey(User, related_name='posts',
                              on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True)
-    message = models.TextField()
+    message = models.TextField(blank=True)
     message_html = models.TextField(editable=False)
     group = models.ForeignKey(
         Group, related_name='posts', null=True, blank=True, on_delete=models.CASCADE)
     liked = models.ManyToManyField(
         settings.AUTH_USER_MODEL, blank=True, related_name='post_liked')
     updated = models.DateTimeField(auto_now=True, blank=True)
-    # TODO : file field
+    destination = models.ForeignKey(
+        Destination, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
-        return self.message
+        return self.user.username
 
     def save(self, *args, **kwargs):
         self.message_html = misaka.html(self.message)
         super().save(*args, **kwargs)
 
-    # def get_absolute_url(self):
-    #     return reverse('posts:single', kwargs={'username': self.user.username,
-    #                                            'pk': self.pk})
+    def get_absolute_url(self):
+        return reverse('posts:add')
 
     class Meta:
         ordering = ['-created_at']
-        unique_together = ['user', 'message']
 
 
 class PostImage(models.Model):
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, default=None, related_name='post_images')
-    image = models.ImageField(upload_to='post-images', blank=True)
+    image = models.FileField(upload_to='post-files', blank=True)
 
     def __str__(self):
-        return self.post.name
+        return self.post.message
 #

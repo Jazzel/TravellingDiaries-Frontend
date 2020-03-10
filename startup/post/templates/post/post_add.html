@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">    
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-11">
+                <h2 style="font-family: Pacifico;" class="m-2">{{head}} > {{sub_head}}</h2>
+            </div>
+        </div>
+        <hr>
+        {% include 'post/form.html' with btn_title='Add' %}
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+    var availableTags = [
+            "Destination 1",
+            "Destination 2",
+        ];
+        $("#destinations").autocomplete({
+            source: availableTags
+        });
+
+    </script>
+{% endblock %}
