@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div class="card">
+                <img class="card-img-top" src="{{request.user.profile.image.url}}" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">{{request.user.first_name}} {{request.user.last_name}}</h4>
+                    <h4 class="card-title">@{{request.user}}</h4>
+                    <p class="card-text">Member since : {{request.user.profile.created.year}} |
+                        {{request.user.profile.created|timesince}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div style="margin: auto;">
+                <div class="card-columns" id="post-section">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -14,6 +14,25 @@ from django.contrib.auth.decorators import login_required
 User = get_user_model()
 
 
+class MyProfileView(DetailView):
+    template_name = "accounts/my-profile.html"
+    queryset = User.objects.all().prefetch_related('posts')
+
+    def get_object(self):
+        return get_object_or_404(User, username__iexact=self.kwargs.get('username'))
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(MyProfileView, self).get_context_data(*args, **kwargs)
+        # following = UserProfile.objects.is_following(
+        #     self.request.user, self.get_object())
+        # context['following'] = following
+        context['head'] = 'Profile'
+        return context
+
+    # def test_func(self):
+    #     return self.request.user.is_superuser
+
+
 class UserRegisterView(FormView):
     form_class = UserForm
     template_name = 'accounts/registration.html'
