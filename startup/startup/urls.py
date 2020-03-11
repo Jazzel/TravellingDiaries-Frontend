@@ -23,10 +23,10 @@ from accounts.views import MyProfileView
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('admin/', admin.site.urls),
-    path('<slug:username>', MyProfileView.as_view(), name='detail'),
+    path('<slug:username>', MyProfileView.as_view(), name='user_profile'),
 
     path('accounts/', include('allauth.urls')),
-    path('account/', include('accounts.urls', namespace='account')),
+    path('account/', include('accounts.urls', namespace='profiles')),
     path('posts/', include('post.urls', namespace='posts')),
     path('api/posts/', include('post.api.urls', namespace='posts-api')),
     path('reviews/', include('reviews.urls', namespace='reviews')),

@@ -8,6 +8,7 @@ from django.shortcuts import reverse
 from django.contrib.auth import get_user_model
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 import datetime
+from django.urls import reverse_lazy
 import logging
 from django.dispatch import receiver
 User = get_user_model()
@@ -20,9 +21,42 @@ ADDRESS_CHOICES = (
 )
 
 
+class UserProfileManager(models.Manager):
+    use_for_related_fields = True
+
+    def all(self):
+        qs = self.get_queryset().all()
+        try:
+            if self.instance:
+                qs = qs.exclude(user=self.instance)
+        except:
+            pass
+        return qs
+
+    def toggle_follow(self, user, to_toggle_user):
+        user_profile, created = UserProfile.objects.get_or_create(
+            user=user)
+        if to_toggle_user in user_profile.following.all():
+            user_profile.following.remove(to_toggle_user)
+            added = False
+        else:
+            user_profile.following.add(to_toggle_user)
+            added = True
+        return added
+
+    def is_following(self, user, followed_by_user):
+        user_profile, created = UserProfile.objects.get_or_create(user=user)
+        if created:
+            return False
+        if followed_by_user in user_profile.following.all():
+            return True
+        return False
+
 class UserProfile(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, related_name='profile', on_delete=models.CASCADE)
+    following = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, blank=True, related_name='followed_by')
     bio = models.TextField(max_length=500, blank=True)
     image = models.ImageField(upload_to='user-images', blank=True)
     stripe_customer_id = models.CharField(max_length=50, blank=True, null=True)
@@ -30,8 +64,20 @@ class UserProfile(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True, blank=True)
 
+    objects = UserProfileManager()
+
     def __str__(self):
         return self.user.username
+
+    def get_following(self):
+        user = self.following.all()
+        return user.exclude(username=self.user.username)
+
+    def get_absolute_url(self):
+        return reverse_lazy('user_profile', kwargs={"username": self.user.username})
+
+    def get_follow_url(self):
+        return reverse_lazy('profiles:follow', kwargs={"username": self.user.username})
 
 
 class UserLog(models.Model):

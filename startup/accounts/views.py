@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import (
-    DetailView, CreateView, TemplateView, ListView)
+    DetailView, CreateView, TemplateView, ListView, View)
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import FormView
@@ -10,8 +10,18 @@ from django.urls import reverse_lazy, reverse
 from .models import UserProfile, UserLog
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
 User = get_user_model()
+
+
+class UserFollowView(View):
+    def get(self, request, username, *args, **kwargs):
+        toggle_user = get_object_or_404(User, username__iexact=username)
+        if request.user.is_authenticated:
+            is_following = UserProfile.objects.toggle_follow(
+                request.user, toggle_user)
+        return redirect('user_profile', username=username)
 
 
 class MyProfileView(DetailView):
@@ -23,9 +33,9 @@ class MyProfileView(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(MyProfileView, self).get_context_data(*args, **kwargs)
-        # following = UserProfile.objects.is_following(
-        #     self.request.user, self.get_object())
-        # context['following'] = following
+        following = UserProfile.objects.is_following(
+            self.request.user, self.get_object())
+        context['following'] = following
         context['head'] = 'Profile'
         return context
 

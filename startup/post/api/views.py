@@ -39,19 +39,17 @@ class PostsListApiView(generics.ListAPIView):
             queryset = Post.objects.filter(
                 user__username=requested_user).prefetch_related('post_images').order_by("-created_at")
         else:
-            queryset = Post.objects.filter(
-                user=self.request.user).prefetch_related('post_images').order_by("-created_at")
-            # im_following = self.request.user.profile.get_following()
-            # qs1 = Tweet.objects.filter(
-            #     user__in=im_following)
-            # qs2 = Tweet.objects.filter(
-            #     user=self.request.user)
-            # queryset = (qs1 | qs2).distinct().order_by("-timestamp")
+            im_following = self.request.user.profile.get_following()
+            qs1 = Post.objects.filter(
+                user__in=im_following).prefetch_related('post_images')
+            qs2 = Post.objects.filter(
+                user=self.request.user).prefetch_related('post_images')
+            queryset = (qs1 | qs2).distinct().order_by("-created_at")
 
-        # query = self.request.GET.get("q", None)
-        # if query is not None:
-        #     queryset = queryset.filter(
-        #         Q(content__icontains=query) | Q(
-        #             user__username__icontains=query)
-        #     )
+        query = self.request.GET.get("q", None)
+        if query is not None:
+            queryset = queryset.filter(
+                Q(content__icontains=query) | Q(
+                    user__username__icontains=query)
+            )
         return queryset

@@ -1,12 +1,13 @@
 from django.urls import path
 from .views import (ProfileView, UserRegisterView,
-                    UserDetailsEditView, UserLogListView, UserLogDetailView, UserListView, UserDetailView, MyProfileView)
+                    UserDetailsEditView, UserLogListView, UserLogDetailView, UserListView, UserDetailView, UserFollowView)
 from django.contrib.auth import views as auth_views
 
-app_name = 'account'
+app_name = 'profiles'
 
 urlpatterns = [
     path('user-profile/', UserDetailsEditView, name='profile'),
+    path('<slug:username>/follow/', UserFollowView.as_view(), name='follow'),
     path('registration/', UserRegisterView.as_view(), name='registration'),
     path('user-log/', UserLogListView.as_view(), name='user_log'),
     path('user-log/details/<int:pk>',

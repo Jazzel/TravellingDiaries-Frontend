@@ -7,10 +7,21 @@
             <div class="card">
                 <img class="card-img-top" src="{{request.user.profile.image.url}}" alt="">
                 <div class="card-body">
-                    <h4 class="card-title">{{request.user.first_name}} {{request.user.last_name}}</h4>
-                    <h4 class="card-title">@{{request.user}}</h4>
-                    <p class="card-text">Member since : {{request.user.profile.created.year}} |
-                        {{request.user.profile.created|timesince}}</p>
+                    <h4 class="card-title">{{object.first_name}} {{object.last_name}}</h4>
+                    <h4 class="card-title">@{{object.username}}</h4>
+                    <p class="card-text">Member since : {{object.profile.created.year}} |
+                        {{object.profile.created|timesince}}</p>
+                    <p>
+                        Followers: {{object.followed_by.all.count }}
+                    </p>
+                    <p><a class="btn btn-info" href="{{ object.profile.get_follow_url }}">
+
+                            {% if not request.user == object %}
+
+                            {% if following %} Unfollow {% else %} Follow {% endif %}
+                            {% endif %}
+
+                        </a></p>
                 </div>
             </div>
         </div>
