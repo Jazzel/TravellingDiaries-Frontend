@@ -1,26 +1,26 @@
 from .serializers import PostModelSerializer
 from rest_framework import permissions
 from post.models import Post
-
 from .pagination import StandardResultPagination
 from rest_framework import generics
 from rest_framework import filters
 from django.db.models import Q
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
-# class PostsListApiView(generics.ListAPIView):
-#     # serializer_class = PostModelSerializer
-#     # permission_classes = [permissions.IsAuthenticated]
+class LikeToggleApiView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
 
-#     def get_queryset(self):
-#         query = self.request.query_params.get('query', None)
-#         if query:
-#             posts = Post.objects.filter(
-#                 Q(message__icontains=query)
-#             ).prefetch_related('post_images')
-#         else:
-#             posts = Post.objects.all().prefetch_related('post_images')
-#         return posts
+    def get(self, request, pk, format=None):
+        posts_qs = Post.objects.filter(pk=pk)
+        message = "Not allowed"
+        if request.user.is_authenticated:
+            is_liked = Post.objects.like_toggle(
+                request.user, posts_qs.first())
+            likes = posts_qs.first().liked.all().count()
+            return Response({'liked': is_liked, 'likes': likes})
+        return Response({'message': message}, status=400)
 
 
 class PostsListApiView(generics.ListAPIView):

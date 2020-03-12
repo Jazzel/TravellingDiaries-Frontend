@@ -5,7 +5,7 @@ from .models import Post
 
 class PostForm(forms.ModelForm):
     destinations = forms.TextInput(
-        attrs={'id': 'destination', 'name': 'destination'})
+        attrs={'id': 'destination', 'name': 'destination', 'class': 'ui-autocomplete-input'})
     images = forms.FileField(required=False,
                              widget=forms.ClearableFileInput(attrs={'multiple': True, 'class': 'form-control pb-5', 'required': False}))
 

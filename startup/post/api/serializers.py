@@ -17,11 +17,24 @@ class PostModelSerializer(serializers.ModelSerializer):
     post_images = PostImageModelSerializer(many=True, read_only=True)
     timesince = serializers.SerializerMethodField()
     destination = DestinationDisplaySerializer(read_only=True)
+    did_like = serializers.SerializerMethodField()
+    liked = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
         fields = ['id', 'user', 'message',
-                  'destination', 'timesince', 'post_images']
+                  'destination', 'timesince', 'did_like', 'liked', 'post_images']
 
     def get_timesince(self, obj):
         return timesince(obj.created_at) + " ago"
+
+    def get_did_like(self, obj):
+        request = self.context.get("request")
+        user = request.user
+        if user.is_authenticated:
+            if user in obj.liked.all():
+                return True
+        return False
+
+    def get_liked(self, obj):
+        return obj.liked.all().count()

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <div class="card">
+            <div class="card animated fadeInUp">
                 <img class="card-img-top" src="{{request.user.profile.image.url}}" alt="">
                 <div class="card-body">
                     <h4 class="card-title">{{object.first_name}} {{object.last_name}}</h4>
@@ -14,14 +14,12 @@
                     <p>
                         Followers: {{object.followed_by.all.count }}
                     </p>
-                    <p><a class="btn btn-info" href="{{ object.profile.get_follow_url }}">
-
-                            {% if not request.user == object %}
-
+                    <p>
+                        {% if not request.user == object %}<a class="btn btn-info"
+                            href="{{ object.profile.get_follow_url }}">
                             {% if following %} Unfollow {% else %} Follow {% endif %}
-                            {% endif %}
-
-                        </a></p>
+                        </a>
+                        {% endif %}</p>
                 </div>
             </div>
         </div>

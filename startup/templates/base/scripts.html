@@ -10,7 +10,7 @@
 <script>
     $(document).ready(function (url) {
 
-        function getParamaterByName(url) {
+        function getURL(url) {
             if (!url) {
                 url = window.location.href;
                 var pathArray = url.split('/');
@@ -22,71 +22,73 @@
             return decodeURIComponent(new_url);
         }
 
-        function getData() {
+        $(document.body).on("click", ".post-like", function (e) {
+            e.preventDefault();
+            var this_ = $(this);
+            var likes = this_.parent().parent().find('#likes');
+            var postId = this_.attr('data-id');
+            var likedUrl = 'api/posts/' + postId + '/like/';
+            $.ajax({
+                method: 'GET',
+                url: likedUrl,
+                success: function (data) {
+                    if (data.liked) {
+                        this_.html('<i class="fa fa-heart"></i>');
+                    }
+                    else {
+                        this_.html('<i class="fa fa-heart-o"></i>');
+                    }
+                    likes.text(data.likes + ' likes');
+                },
+                error: function (data) {
+                    console.log('error');
+                    console.log(data);
+                },
+            });
+        });
+
+        function fillPosts() {
             var mainContainer = $('#post-section');
             $.ajax({
                 method: 'GET',
-                url: getParamaterByName(),
+                url: getURL(),
                 success: function (data) {
                     for (let index = 0; index < data.results.length; index++) {
                         const element = data.results[index];
                         var container = '';
+                        var imageContainer = '';
+                        var destinationContainer = '';
+                        var likeContainer = '<i class="fa fa-heart-o"></i>';
                         if (element.destination) {
-                            if (element.post_images.length >= 1) {
-                                container = '<div class="card shadow m-4"> \
-                                                <div class="pl-3 pt-3 pr-3"> \
+                            destinationContainer = '<small>at <a href="#" class="styled-font">#' + element.destination.name + '</a></small></br>';
+                        }
+                        if (element.post_images.length >= 1) {
+                            imageContainer = '<div class="pl-3 pt-3 pr-3"> \
                                                     <div class="card"> \
                                                         <div class="card-body p-0 m-0"> \
                                                             <img class="card-img-top" src="'+ element.post_images["0"].image + '" alt=""> \
                                                         </div> \
                                                     </div> \
-                                                </div> \
-                                                <div class="card-body"> \
-                                                    <h4 class="card-title">'+ element.message + '</h4> \
-                                                    <p class="card-text">by <a href="'+ element.user.url + '">@' + element.user.username + '</a></br> \
-                                                    <small>at <a href="#" class="styled-font">#'+ element.destination.name + '</a></small></br> \
-                                                    <small>'+ element.timesince + '</small></p> \
-                                                </div> \
-                                            </div>';
-                            }
-                            else {
-                                container = '<div class="card shadow  m-4"> \
-                                                <div class="card-body"> \
-                                                    <h4 class="card-title">'+ element.message + '</h4> \
-                                                    <p class="card-text">by <a href="'+ element.user.url + '">@' + element.user.username + '</a></br> \
-                                                    <small>at <a href="#" class="styled-font">#'+ element.destination.name + '</a></small></br> \
-                                                    <small>'+ element.timesince + '</small></p> \
-                                                </div> \
-                                            </div>';
-                            }
+                                                </div>';
                         }
-                        else {
-                            if (element.post_images.length >= 1) {
-                                container = '<div class="card shadow m-4"> \
-                                                <div class="pl-3 pt-3 pr-3"> \
-                                                    <div class="card"> \
-                                                        <div class="card-body p-0 m-0"> \
-                                                            <img class="card-img-top" src="'+ element.post_images["0"].image + '" alt=""> \
-                                                        </div> \
-                                                    </div> \
-                                                </div> \
-                                                <div class="card-body"> \
-                                                    <h4 class="card-title">'+ element.message + '</h4> \
-                                                    <p class="card-text">by <a href="'+ element.user.url + '">@' + element.user.username + '</a></br> \
-                                                    <small>'+ element.timesince + '</small></p> \
-                                                </div> \
-                                            </div>';
-                            }
-                            else {
-                                container = '<div class="card shadow  m-4"> \
-                                                <div class="card-body"> \
-                                                    <h4 class="card-title">'+ element.message + '</h4> \
-                                                    <p class="card-text">by <a href="'+ element.user.url + '">@' + element.user.username + '</a></br> \
-                                                    <small>'+ element.timesince + '</small></p> \
-                                                </div> \
-                                            </div>';
-                            }
+                        if (element.did_like) {
+                            likeContainer = '<i class="fa fa-heart"></i>';
                         }
+                        container = '<div class="card shadow m-4 animated fadeInUp"> \
+                                                '+ imageContainer + ' \
+                                                <div class="card-body"> \
+                                                    <h4 class="card-title">'+ element.message + '</h4> \
+                                                    <p class="card-text">by <a href="'+ element.user.url + '">@' + element.user.username + '</a></br> \
+                                                    '+ destinationContainer + ' \
+                                                    <small>'+ element.timesince + '</small></br> \
+                                                    <small id="likes"> '+ element.liked + ' likes</small></p> \
+                                                </div> \
+                                                <div class="card-footer"> \
+                                                    <a class="post-like" href="#" data-id="'+ element.id + '"> \
+                                                        '+ likeContainer + ' \
+                                                    </a> \
+                                                </div> \
+                                            </div> ';
                         mainContainer.append(container);
                     }
                 },
@@ -95,7 +97,7 @@
                 }
             })
         }
-        getData();
+        fillPosts();
     });
 </script>
 {% endblock scripts %}

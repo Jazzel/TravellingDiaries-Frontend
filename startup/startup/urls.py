@@ -32,6 +32,9 @@ urlpatterns = [
     path('reviews/', include('reviews.urls', namespace='reviews')),
     path('destinations/', include('destinations.urls',
                                   namespace='destinations')),
+    path('api/destinations/', include('destinations.api.urls',
+                                      namespace='destination-api')),
+
 ]
 if settings.DEBUG:
     urlpatterns += (static(settings.STATIC_URL,

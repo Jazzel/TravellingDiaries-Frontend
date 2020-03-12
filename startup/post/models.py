@@ -34,6 +34,8 @@ class Post(models.Model):
     destination = models.ForeignKey(
         Destination, on_delete=models.CASCADE, blank=True, null=True)
 
+    objects = PostManager()
+
     def __str__(self):
         return self.user.username
 
