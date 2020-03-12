@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import (PostCreateView)
+from .views import (PostCreateView, PostDetailView)
 
 app_name = 'posts'
 
@@ -10,6 +10,6 @@ urlpatterns = [
     #  FoodUpdateView.as_view(), name='edit'),
     # path('delete/<int:pk>/',
     #      FoodDeleteView.as_view(), name='delete'),
-    # path('details/<int:pk>/',
-    #      FoodDetailView.as_view(), name='details'),
+    path('details/<int:pk>/',
+         PostDetailView.as_view(), name='details'),
 ]

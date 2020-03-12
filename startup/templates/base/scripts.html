@@ -27,7 +27,7 @@
             var this_ = $(this);
             var likes = this_.parent().parent().find('#likes');
             var postId = this_.attr('data-id');
-            var likedUrl = 'api/posts/' + postId + '/like/';
+            var likedUrl = '/api/posts/' + postId + '/like/';
             $.ajax({
                 method: 'GET',
                 url: likedUrl,
@@ -77,7 +77,7 @@
                         container = '<div class="card shadow m-4 animated fadeInUp"> \
                                                 '+ imageContainer + ' \
                                                 <div class="card-body"> \
-                                                    <h4 class="card-title">'+ element.message + '</h4> \
+                                                    <h4 class="card-title"><a href="/posts/details/'+ element.id + '">' + element.message + '</a></h4> \
                                                     <p class="card-text">by <a href="'+ element.user.url + '">@' + element.user.username + '</a></br> \
                                                     '+ destinationContainer + ' \
                                                     <small>'+ element.timesince + '</small></br> \
