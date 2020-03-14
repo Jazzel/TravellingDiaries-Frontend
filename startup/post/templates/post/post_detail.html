@@ -4,11 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <div class="card animated fadeInUp">
+            <div class="card shadow animated fadeInUp">
                 <img class="card-img-top" src="{{object.user.profile.image.url}}" alt="">
                 <div class="card-body">
                     <h4 class="card-title">{{object.user.first_name}} {{object.user.last_name}}</h4>
-                    <h4 class="card-title">@{{object.user.username}}</h4>
+                    <h4 class="card-title">
+                        <a href="{% url 'user_profile' username=object.user.username %}">@{{object.user.username}}</a>
+                    </h4>
                     <p class="card-text">Member since : {{object.user.profile.created.year}} |
                         {{object.user.profile.created|timesince}}</p>
                     <p>
@@ -27,6 +29,7 @@
             <div style="margin: auto;">
                 <div class="card shadow m-4 animated fadeInUp">
                     {% if object.post_images %}
+                    {% if object.post_images.count > 1 %}
                     <div class="card-columns mt-3">
                         {% for post_image in object.post_images.all %}
                         <div class="pl-3 pr-3">
@@ -39,6 +42,17 @@
                         </div>
                         {% endfor %}
                     </div>
+                    {% else %}
+                    <div class="pl-3 pr-3 pt-3">
+                        {% for post_image in object.post_images.all %}
+                        <div class="card">
+                            <div class="card-body p-0">
+                                <img class="card-img-top" src="{{post_image.image.url}}" alt="">
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                     {% endif %}
                     <div class="card-body">
                         <h4 class="card-title">{{object.message}}</h4>
