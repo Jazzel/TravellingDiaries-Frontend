@@ -1,13 +1,12 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+{% load static %}
+<nav class="navbar navbar-expand-sm navbar-light bg-light shadow-lg">
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
         aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
-    <div class="collapse navbar-collapse bg-dark" id="collapsibleNavId">
-        {% comment %}
-        {% endcomment %}
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
         <div class="row w-100 p-0 m-0">
             <div class="col-4">
-                <nav class="navbar bg-warning">
-                    <ul class="navbar-nav bg-danger mr-auto">
+                <nav class="navbar">
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'posts:add' %}">New</a>
                         </li>
@@ -24,8 +23,8 @@
             </div>
             <div class="col-4 ">
                 {% if user.is_authenticated %}
-                <nav class="navbar bg-warning">
-                    <ul class="navbar-nav bg-danger ml-auto">
+                <nav class="navbar">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'user_profile' username=request.user.username %}">My
                                 Profile</a>
@@ -40,3 +39,69 @@
         </div>
     </div>
 </nav>
+<div class="container-fluid p-0 m-0">
+    <div class="card border-0 p-0 m-0">
+        <img src="{% static 'images/Travel.jpg' %}" height='300' style="background-size: cover;" alt="">
+        <div class="card-body" style="position: absolute;top:75%">
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h4 class="card-title">Karachi</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card shadow col-6">
+                    <div class="card-body">
+                        <div class="card-columns">
+                            <div class="card">
+                                <img class="card-img-top" src="holder.js/100x180/" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">Hotels</h4>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img-top" src="holder.js/100x180/" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">Restaurants</h4>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img-top" src="holder.js/100x180/" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">Flights</h4>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img-top" src="holder.js/100x180/" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">Trains</h4>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img-top" src="holder.js/100x180/" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">Buses</h4>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="card-img-top" src="holder.js/100x180/" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">Vacational Rentals</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h4 class="card-title">Weather</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 250px;"></div>
+</div>
