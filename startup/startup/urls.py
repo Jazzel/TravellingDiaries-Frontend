@@ -23,8 +23,6 @@ from accounts.views import MyProfileView
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('admin/', admin.site.urls),
-    path('<slug:username>', MyProfileView.as_view(), name='user_profile'),
-
     path('accounts/', include('allauth.urls')),
     path('account/', include('accounts.urls', namespace='profiles')),
     path('posts/', include('post.urls', namespace='posts')),
@@ -34,6 +32,8 @@ urlpatterns = [
                                   namespace='destinations')),
     path('api/destinations/', include('destinations.api.urls',
                                       namespace='destination-api')),
+    path('<slug:username>', MyProfileView.as_view(), name='user_profile'),
+
 
 ]
 if settings.DEBUG:

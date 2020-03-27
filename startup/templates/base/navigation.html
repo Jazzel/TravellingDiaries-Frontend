@@ -1,25 +1,42 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-    <a class="navbar-brand styled-font" href="{% url 'home' %}">TravellingDiaries</a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
         aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'posts:add' %}">New</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-        </ul>
-        {% if user.is_authenticated %}
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'user_profile' username=request.user.username %}">My Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-            </li>
-        </ul>
-        {% endif %}
+    <div class="collapse navbar-collapse bg-dark" id="collapsibleNavId">
+        {% comment %}
+        {% endcomment %}
+        <div class="row w-100 p-0 m-0">
+            <div class="col-4">
+                <nav class="navbar bg-warning">
+                    <ul class="navbar-nav bg-danger mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'posts:add' %}">New</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-4 text-center">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <p class="styled-font h3">TravellingDiaries</p>
+                </a>
+            </div>
+            <div class="col-4 ">
+                {% if user.is_authenticated %}
+                <nav class="navbar bg-warning">
+                    <ul class="navbar-nav bg-danger ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'user_profile' username=request.user.username %}">My
+                                Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </nav>
