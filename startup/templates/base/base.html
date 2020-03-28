@@ -14,9 +14,9 @@
 
 <body>
     {% include 'base/navigation.html' %}
-    {% block messages %}
+    {% comment %} {% block messages %}
     {% include 'base/messages.html' %}
-    {% endblock messages %}
+    {% endblock messages %} {% endcomment %}
         {% block content %}
         {% endblock %}
     {% include 'base/footer.html' %}

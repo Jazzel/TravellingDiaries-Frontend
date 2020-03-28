@@ -1,9 +1,10 @@
 {% load static %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">
 <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet">
-</link>
+<link rel="stylesheet" type="text/css" href="{% static 'static/css/component2.css' %}" />
+<script src="{% static 'static/js/modernizr-2.6.2.min.js' %}"></script>
 <link href="https://fonts.googleapis.com/css?family=Acme|Pacifico&display=swap" rel="stylesheet">
 <style>
     .styled-font {
@@ -17,5 +18,14 @@
 
     .ui-menu {
         padding-left: 10px !important;
+    }
+
+    a,
+    button {
+        outline: none;
+    }
+
+    a {
+        text-decoration: none;
     }
 </style>

@@ -1,11 +1,82 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block content %}
+<div class="container-fluid p-0 m-0">
+    <div class="card border-0 p-0 m-0">
+        <img src="{% static 'images/Travel.jpg' %}" height='300' style="background-size: cover;" alt="">
+        <div class="card-body" style="position: absolute;top:75%">
+            <div class="row">
+                <div class="col">
+                    <div class="card border-0 shadow">
+                        <img class="card-img-top" src="{{city_data.image.url}}" alt="">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <p><i class="fa fa-map-marker-alt float-left" aria-hidden="true"></i>
+                                    &nbsp; {{city_data.destination.city}}
+                                </p>
+                            </h4>
+                            <p>
+                                <hr />
+                                Featured destinations:
+                                <br /> {% for destination in city_locations %}
+                                <span class="badge badge-dark">{{destination.name}}</span>
+                                {% endfor %}
+                        </div>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="component">
+                        <button class="cn-button" id="cn-button">Menu</button>
+                        <div class="cn-wrapper" id="cn-wrapper">
+                            <ul>
+                                <li><a href="#"><span>About</span></a></li>
+                                <li><a href="#"><span>Tutorials</span></a></li>
+                                <li><a href="#"><span>Articles</span></a></li>
+                                <li><a href="#"><span>Snippets</span></a></li>
+                                <li><a href="#"><span>Plugins</span></a></li>
+                                <li><a href="#"><span>Contact</span></a></li>
+                                <li><a href="#"><span>Follow</span></a></li>
+                            </ul>
+                        </div>
+                        <!-- End of Nav Structure -->
+                    </div>
+
+                    <br />
+                    <br />
+                    <div class="p-0" id="post-section">
+
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card border-0 shadow">
+                        <img class="card-img-top" src="{% static 'images/Warm.jpg' %}" alt="">
+
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <p>
+                                    <i class="fas fa-sun    "></i>
+                                    &nbsp; Weather - 28 C - Sunny
+                                </p>
+                            </h4>
+                            <p>
+                                <hr />
+                                <p class="">Grab sunglasses.</p>
+                                <span class="">Tommorow will be 29 C.</span>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 350px;"></div>
+</div>
 
 <div class="container">
-    <div style="margin: auto;width: 80%;" id="post-section">
 
-    </div>
     <!-- <div style="margin: auto;width: 80%;">
         <div class="pl-4 pt-2 pr-4">
             <div class="card shadow-lg animated fadeInUp">

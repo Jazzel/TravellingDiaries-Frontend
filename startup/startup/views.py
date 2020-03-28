@@ -10,9 +10,9 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         city = City.objects.get(name='Karachi')
         destination = Destination.objects.filter(city=city).order_by(
-            '-created').first()
-        default_image = DestinationImage.objects.filter(
-            destination=destination).first()
-        print(default_image.image)
-        context['city_data'] = destination
+            '-created')[:5]
+        city_data = DestinationImage.objects.filter(
+            destination=destination.first()).first()
+        context['city_locations'] = destination
+        context['city_data'] = city_data
         return context

@@ -6,6 +6,8 @@
     integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ <script src="{% static 'static/js/polyfills.js' %}"></script>
+    <script src="{% static 'static/js/demo2.js' %}"></script>
 {% block scripts %}
 <script>
     $(document).ready(function (url) {
@@ -129,7 +131,7 @@
             if (element.did_like) {
                 likeContainer = '<i class="fa fa-heart"></i>';
             }
-            container = '<div class="card shadow m-4 animated fadeInUp"> \
+            container = '<div class="card shadow mt-4 animated fadeInUp"> \
                                                 '+ imageContainer + ' \
                                                 <div class="card-body"> \
                                                     <h4 class="card-title"><a href="/posts/details/'+ element.id + '">' + element.message + '</a></h4> \
