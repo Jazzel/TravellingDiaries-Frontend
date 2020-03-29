@@ -9,11 +9,11 @@
 
 	function handler() {
 		if (!open) {
-			this.innerHTML = "Close";
+			this.innerHTML = '<i class="fa fa-times animated faster fadeIn" aria-hidden="true"></i>';
 			classie.add(wrapper, 'opened-nav');
 		}
 		else {
-			this.innerHTML = "Menu";
+			this.innerHTML = '<i class="fa fa-align-center animated faster fadeIn" aria-hidden="true"></i>';
 			classie.remove(wrapper, 'opened-nav');
 		}
 		open = !open;

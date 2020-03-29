@@ -17,34 +17,21 @@ body {
 	position: relative;
 	margin-bottom: 3em;
 	height: 4em;
-	background: rgba(0,0,0,0.05);
 	font-family: 'Lato', Arial, sans-serif;
 }
 
-.component > h2 {
-	position: absolute;
-	overflow: hidden;
-	width: 100%;
-	text-align: center;
-	text-transform: uppercase;
-	white-space: nowrap;
-	font-weight: 300;
-	font-style: italic;
-	font-size: 12em;
-	opacity: 0.1;
-	cursor: default;
-}
-
 .cn-button {
+	font-family: "Font Awesome 5 Free";
+	content: "\f007";
 	position: absolute;
 	top: 100%;
 	left: 50%;
 	z-index: 11;
 	margin-top: -2.25em;
 	margin-left: -2.25em;
-	padding-top: 0em;
-	width: 4.5em;
-	height: 4.5em;
+	padding: 0;
+	width: 3.0em;
+	height: 3.0em;
 	border: none;
 	border-radius: 50%;
 	background: none;
@@ -54,8 +41,7 @@ body {
 	color: #fff;
 	text-align: center;
 	font-weight: 700;
-	font-size: 1.5em;
-	text-transform: uppercase;
+	font-size: 1.8em;
 	cursor: pointer;
 	-webkit-backface-visibility: hidden;
 }
@@ -66,7 +52,7 @@ body {
 	left: 50%;
 	z-index: 10;
 	margin-top: -13em;
-	margin-left: -13.5em;
+	margin-left: -14.6em;
 	width: 27em;
 	height: 27em;
 	border-radius: 50%;
