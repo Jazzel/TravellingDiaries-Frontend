@@ -33,7 +33,7 @@ urlpatterns = [
     path('api/destinations/', include('destinations.api.urls',
                                       namespace='destination-api')),
     path('<slug:username>', MyProfileView.as_view(), name='user_profile'),
-
+    path('weather/', include('weather.urls', namespace='weather')),
 
 ]
 if settings.DEBUG:
