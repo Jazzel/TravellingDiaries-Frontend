@@ -13,7 +13,7 @@ class HomeView(TemplateView):
         city_name = 'Karachi'
 
         city = City.objects.get(name=city_name)
-        url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=ab1511265be0e3512b8a68c06a71358f'
+        url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=d2b93abb73a376e3700130987441f8ce'
         city_weather = requests.get(url.format(city_name)).json()
         weather = {
             'city': city,
