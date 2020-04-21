@@ -16,7 +16,7 @@ body {
 .component {
 	position: relative;
 	margin-bottom: 3em;
-	height: 4em;
+	height: 6em;
 	font-family: 'Lato', Arial, sans-serif;
 }
 
@@ -35,7 +35,7 @@ body {
 	border: none;
 	border-radius: 50%;
 	background: none;
-	background: rgb(38, 146, 124);  /* fallback for old browsers */
+	background: #34695b;  /* fallback for old browsers */
 	outline: none !important;
 	border: none !important;
 	color: #fff;
@@ -130,10 +130,10 @@ body {
 	width: 14.5em;
 	height: 14.5em;
 	border-radius: 50%;
-	background: #6c757d;
-	background: -webkit-radial-gradient(transparent 35,#333333 35%,  #93291E);
+	background: #1f4037;
+	background: -webkit-radial-gradient(transparent 35,#1f4037 35%,  #93291E);
 	background: -moz-radial-gradient(transparent 35%,#00B4DB 35%,  #93291E);
-	background: radial-gradient(transparent 35%, #43C6AC 35%,  #191654);
+	background: radial-gradient(transparent 35%, #1f4037 35%,  #99f2c8);
 	color: #fff;
 	text-align: center;
 	text-decoration: none;

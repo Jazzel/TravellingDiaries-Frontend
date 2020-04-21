@@ -4,7 +4,7 @@
 <div class="container-fluid p-0 m-0">
     <div class="card border-0 p-0 m-0">
         <div class="card-header p-4 pl-3"
-            style="background-image: url('{% static 'images/Travel.jpg' %}'); background-size:cover;height:300px;">
+            style="background-image: url('{% static 'images/Travel1.jpg' %}'); background-size:cover;background-attachment: fixed;height:400px;">
 
 
 
@@ -106,7 +106,7 @@
                                 <div class="col-1">
                                     <img class='rounded-circle' width='50' src='{{request.user.profile.image.url}}'>
                                 </div>
-                                <div class="col">
+                                <div class="col ml-1">
                                     <form action="">
                                         <input class="form-control m-0 w-100" style="font-size: 25px;" type="text"
                                             placeholder="What's up ? {{request.user.username}}" />
@@ -115,13 +115,13 @@
                             </div>
                             <div class="row p-3 text-center w-100">
                                 <div class="col-4">
-                                    <i class="fas fa-poll-people    "></i> Tag People
+                                    <i class="text-primary fas fa-user-friends"></i> &nbsp; Tag Someone
                                 </div>
                                 <div class="col-4">
-                                    Tag Location
+                                    <i class="text-danger fas fa-map-marked-alt"></i> &nbsp; Tag Location
                                 </div>
                                 <div class="col-4">
-                                    Something else..
+                                    <i class="text-primary fas fa-plus"></i> &nbsp; Something else..
                                 </div>
                             </div>
                         </div>
@@ -151,7 +151,7 @@
                         {% else %} none {{ current_time }} {% endif %}>
                         <img class=" card-img-top shadow-lg"
                             src="http://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/{{ weather.icon }}.png"
-                            alt="Image">
+                            alt="Image" style="z-index: -1;">
                         <div class="card-body bg-light">
                             <h4 class="card-title">
                                 <p>
