@@ -3,10 +3,16 @@ from destinations.models import Destination, DestinationImage
 from cities_light.models import City
 import requests
 from django.utils import timezone
+# from django.http import Http
 
 
 class HomeView(TemplateView):
     template_name = 'home/home.html'
+
+    # def get(self, request):
+    #     q = request.GET.get('q')
+    #     print(q)
+    #     return Ht
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
@@ -31,5 +37,6 @@ class HomeView(TemplateView):
         context['weather'] = weather
         context['now'] = timezone.now().hour
         print(timezone.now())
-
+        selected = self.request.GET.get('selected')
+        print(selected)
         return context

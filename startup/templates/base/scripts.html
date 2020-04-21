@@ -6,8 +6,8 @@
     integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
- <script src="{% static 'static/js/polyfills.js' %}"></script>
-    <script src="{% static 'static/js/demo2.js' %}"></script>
+<script src="{% static 'static/js/polyfills.js' %}"></script>
+<script src="{% static 'static/js/demo2.js' %}"></script>
 {% block scripts %}
 <script>
     $(document).ready(function (url) {
@@ -17,7 +17,7 @@
         var nextPostUrl;
         function parsePosts() {
             if (postsList == 0) {
-                mainContainer.text("No tweets currently found !!");
+                mainContainer.text("No posts currently found !!");
             }
             else {
                 $.each(postsList, function (key, value) {
@@ -82,9 +82,9 @@
                 var pathArray = url.split('/');
             }
             var new_url = '{% url "posts-api:list" %}';
-            if (pathArray[3]) {
-                new_url += pathArray[3];
-            }
+            // if (pathArray[3]) {
+            //     new_url += pathArray[3];
+            // }
             return decodeURIComponent(new_url);
         }
         $(document.body).on("click", ".post-like", function (e) {
