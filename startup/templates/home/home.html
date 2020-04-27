@@ -152,7 +152,7 @@
                         style="background: url('{% static 'images/Evening.jpg' %}'); background-size: cover;background-attachment: scroll;"
                         {% elif current_time == '00' %}
                         style="background: url('{% static 'images/Midnight.jpg' %}'); background-size: cover;background-attachment: scroll;"
-                        {% elif current_time in "['1','2','3','4','5']" %}
+                        {% elif current_time in "['01','02','03','04','05']" %}
                         style="background: url('{% static 'images/Night.jpg' %}'); background-size: cover;background-attachment: scroll;"
                         {% elif current_time == '06' %}
                         style="background: url('{% static 'images/Sunrise.jpg' %}'); background-size: cover;background-attachment: scroll;"
@@ -164,7 +164,6 @@
                             <h4 class="card-title">
                                 <p>
                                     <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
-
                                     &nbsp; Weather - {{ weather.temperature }}° C
                                 </p>
                             </h4>
@@ -205,22 +204,39 @@
                 <center>
                     <div class="modal fade" style="background-color: rgba(0,0,0,0.7);" id="inputLaunchToPOST"
                         tabindex="-2" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                        <div class="modal-dialog h-100" role="document">
-                            <div class="modal-content bg-transparent border-0 h-25" style="align-self: center;">
-                            </div>
-                            <div class="modal-content" style="align-self: center;">
+                        <div class="container">
+                            <div class="modal-content mt-5">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Modal title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <h5 class="modal-title" style="font-family: Pacifico;" class="m-2">Posts &gt; Add
                                 </div>
-                                <div class="modal-body">
-                                    Body
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save</button>
+                                <div class="modal-body text-left">
+                                    <form action="" class="w-100" method="POST" enctype="multipart/form-data">
+                                        <div id="div_id_message" class="form-group">
+                                            <label for="id_message" class="">
+                                                Message
+                                            </label>
+                                            <div class=""> <textarea name="message" cols="40" rows="10"
+                                                    class="textarea form-control" id="id_message"></textarea> </div>
+                                        </div>
+                                        <div id="div_id_images" class="form-group"> <label for="id_images" class="">
+                                                Images
+                                            </label>
+                                            <div class=""> <input type="file" name="images" multiple=""
+                                                    class="form-control pb-5 clearablefileinput form-control-file"
+                                                    id="id_images"> </div>
+                                        </div>
+
+                                        <div class="form-group"> <label for="id_message" class="">
+                                                <label for="id_images" class=" requiredField">
+                                                    Destination </label>
+                                            </label>
+                                            <div class="">
+                                                <input type="text" class="form-control ui-autocomplete-input"
+                                                    name="destinations" id="destinations" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <input class="btn btn-primary w-100" type="submit" value="Post">
+                                    </form>
                                 </div>
                             </div>
                         </div>
