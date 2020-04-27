@@ -6,4 +6,12 @@ from destinations.models import Destination
 
 class DestinationListApiView(generics.ListAPIView):
     serializer_class = DestinationDisplaySerializer
-    queryset = Destination.objects.all()
+
+    def get_queryset(self):
+        query = self.request.query_params.get('query', None)
+        print(query)
+        if query:
+            destinations = Destination.objects.filter(category=query)
+        else:
+            destinations = Destination.objects.all()
+        return destinations

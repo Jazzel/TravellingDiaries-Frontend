@@ -109,7 +109,8 @@
                                 <div class="col ml-1">
                                     <form action="">
                                         <input class="form-control m-0 w-100" style="font-size: 25px;" type="text"
-                                            placeholder="What's up ? {{request.user.username}}" />
+                                            placeholder="What's up ? {{request.user.username}}" data-toggle="modal"
+                                            data-target="#inputLaunchToPOST" />
                                     </form>
                                 </div>
                             </div>
@@ -200,8 +201,34 @@
                         </div>
                     </div>
                 </div>
+                <!-- Modal -->
+                <center>
+                    <div class="modal fade" style="background-color: rgba(0,0,0,0.7);" id="inputLaunchToPOST"
+                        tabindex="-2" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog h-100" role="document">
+                            <div class="modal-content bg-transparent border-0 h-25" style="align-self: center;">
+                            </div>
+                            <div class="modal-content" style="align-self: center;">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Body
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </center>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}
