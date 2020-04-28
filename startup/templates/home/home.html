@@ -208,9 +208,12 @@
                             <div class="modal-content mt-5">
                                 <div class="modal-header">
                                     <h5 class="modal-title" style="font-family: Pacifico;" class="m-2">Posts &gt; Add
+                                    </h5>
+                                    <button id="nacho">dasd</button>
                                 </div>
                                 <div class="modal-body text-left">
-                                    <form action="" class="w-100" method="POST" enctype="multipart/form-data">
+                                    <form class="w-100" id='postForm' method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
                                         <div id="div_id_message" class="form-group">
                                             <label for="id_message" class="">
                                                 Message
@@ -218,23 +221,7 @@
                                             <div class=""> <textarea name="message" cols="40" rows="10"
                                                     class="textarea form-control" id="id_message"></textarea> </div>
                                         </div>
-                                        <div id="div_id_images" class="form-group"> <label for="id_images" class="">
-                                                Images
-                                            </label>
-                                            <div class=""> <input type="file" name="images" multiple=""
-                                                    class="form-control pb-5 clearablefileinput form-control-file"
-                                                    id="id_images"> </div>
-                                        </div>
 
-                                        <div class="form-group"> <label for="id_message" class="">
-                                                <label for="id_images" class=" requiredField">
-                                                    Destination </label>
-                                            </label>
-                                            <div class="">
-                                                <input type="text" class="form-control ui-autocomplete-input"
-                                                    name="destinations" id="destinations" autocomplete="off">
-                                            </div>
-                                        </div>
                                         <input class="btn btn-primary w-100" type="submit" value="Post">
                                     </form>
                                 </div>
@@ -247,4 +234,14 @@
     </div>
 </div>
 
+{% endblock %}
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        $('#nacho').on('click', function () {
+            $('#inputLaunchToPOST').modal('hide');
+
+        })
+    });
+</script>
 {% endblock %}
