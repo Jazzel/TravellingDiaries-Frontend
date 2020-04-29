@@ -206,39 +206,59 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" style="font-family: Pacifico;" class="m-2">Posts &gt; Add
+                                <h5 class="modal-title" style="font-family: Pacifico;" class="m-2">Posts &gt; New
                                 </h5>
                             </div>
                             <div class="modal-body text-left p-0">
-                                <div class="pt-3 pl-3">
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <img class='rounded-circle mr-3 float-left' width='50'
-                                                src='{{request.user.profile.image.url}}'>
-                                        </div>
-                                    </div>
 
-                                    <p class="h5 p-0"> Hello
-                                        {{request.user.first_name}}
-                                        {{request.user.last_name}}
-                                        !!
-                                    </p>
-                                    </p>
+                                <div class="row">
+                                    <div class="col">
+                                        <form id='postForm' method="POST"" enctype=" multipart/form-data">
+                                            <div id="div_id_type" class="form-group form-inline pt-3 pl-4">
+                                                <div class="">
+                                                    <label for="type" class="w-100">Available for
+                                                        <select class="form-control ml-2" name="type" id="">
+                                                            <option>Public</option>
+                                                            <option>Private</option>
+                                                        </select>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <hr class="w-75 m-auto">
+                                            <div class="pl-3 mt-3">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <img class='rounded-circle mr-3 float-left' width='50'
+                                                            src='{{request.user.profile.image.url}}'>
+                                                    </div>
+                                                    <div class="col-10 mt-2 ml-0 pl-0 pt-1">
+                                                        <p class="h5 p-0"> Hello
+                                                            {{request.user.first_name}}
+                                                            {{request.user.last_name}}
+                                                            !!
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% csrf_token %}
+
+                                            <div id="div_id_message" class="form-group">
+
+                                                <div class=""> <textarea name="message"
+                                                        placeholder="Want to share something ?" rows="4"
+                                                        style="font-size: 32px;" class="textarea w-100 p-3 border-0"
+                                                        id="id_message"></textarea>
+                                                </div>
+                                                <p class="p-3" id="charsCurrentCountOfPost">O of 300 characters</p>
+
+                                            </div>
+                                            <div class="p-3">
+                                                <input class="btn btn-primary w-100" type="submit" value="Post">
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
 
-                                <form class="w-100" id='postForm' method="POST" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    <div id="div_id_message" class="form-group">
-
-                                        <div class=""> <textarea name="message" placeholder="Want to share something ? "
-                                                cols="40" rows="5" style="font-size: 32px;"
-                                                class="textarea form-control" id="id_message"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="p-3">
-                                        <input class="btn btn-primary w-100" type="submit" value="Post">
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -248,22 +268,4 @@
     </div>
 </div>
 
-{% endblock %}
-{% block scripts %}
-<script>
-    $(document).ready(function () {
-        var charsStart = 140;
-        var charsCurrent = 0;
-        var charsLeft = 0;
-        $("#postForm textarea").keyup(function (event) {
-            // console.log(event.key, event.timeStamp);
-            var postValue = $(this).val()
-            charsCurrent = charsStart - postValue.length;
-            // var spanChars = $("#tweetCharsLeft");
-            // spanChars.text(charsCurrent);
-            console.log(charsCurrent);
-            // $(this).docum
-        });
-    });
-</script>
 {% endblock %}

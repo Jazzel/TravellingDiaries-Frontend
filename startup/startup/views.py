@@ -36,7 +36,5 @@ class HomeView(TemplateView):
         context['city_data'] = city_data
         context['weather'] = weather
         context['now'] = timezone.now().hour
-        print(timezone.now())
         selected = self.request.GET.get('selected')
-        print(selected)
         return context

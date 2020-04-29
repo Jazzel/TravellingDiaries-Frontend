@@ -7,6 +7,12 @@ import misaka
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
+# Create your models here.
+CATEGORY = (
+    ('Public', 'Public'),
+    ('Private', 'Private'),
+)
+
 
 class PostManager(models.Manager):
     def like_toggle(self, user, post_obj):
@@ -33,6 +39,7 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True, blank=True)
     destination = models.ForeignKey(
         Destination, on_delete=models.CASCADE, blank=True, null=True)
+    type = models.CharField(choices=CATEGORY, max_length=100, default='Public')
 
     objects = PostManager()
 

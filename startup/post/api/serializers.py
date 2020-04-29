@@ -22,7 +22,7 @@ class PostModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['id', 'user', 'message',
+        fields = ['id', 'user', 'message', 'type',
                   'destination', 'timesince', 'did_like', 'liked', 'post_images']
 
     def get_timesince(self, obj):
