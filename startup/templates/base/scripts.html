@@ -159,8 +159,8 @@
             var spanChars = $("#charsCurrentCountOfPost");
             spanChars.text(charsCurrent + ' of ' + charsTotal + ' characters');
             if (charsCurrent == 0) {
-                spanChars.addClass("text-dark")
-                spanChars.removeClass("text-danger")
+                spanChars.addClass("text-danger")
+                spanChars.removeClass("text-dark")
             }
             else if (charsCurrent > charsTotal) {
                 spanChars.addClass("text-danger")
@@ -174,20 +174,25 @@
 
         $('#postForm').on('submit', function (e) {
             e.preventDefault();
-            var this_ = $(this);
-            var formData = this_.serialize();
+            var form = $(this);
+            var formdata = false;
+            if (window.FormData) {
+                formdata = new FormData(form[0]);
+            }
             if (charsCurrent > 0 && charsCurrent <= charsTotal) {
                 $.ajax({
                     url: "/api/posts/create/",
-                    data: formData,
+                    data: formdata ? formdata : form.serialize(),
                     method: "POST",
+                    processData: false,
+                    contentType: false,
                     success: function (data) {
+                        console.log(data);
                         fetchPosts();
-                        this_.find("input[type=text], textarea").val("");
+                        form.find("input[type=text], textarea").val("");
                         $('#inputLaunchToPOST').modal('hide');
                         attachPost(data, true);
                         // updateHashLinks();
-
                     },
                     error: function (data) {
                         console.log("error");
@@ -196,7 +201,6 @@
                     },
                 });
             }
-
         });
 
         fetchPosts();

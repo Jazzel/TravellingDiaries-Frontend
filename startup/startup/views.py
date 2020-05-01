@@ -9,11 +9,6 @@ from django.utils import timezone
 class HomeView(TemplateView):
     template_name = 'home/home.html'
 
-    # def get(self, request):
-    #     q = request.GET.get('q')
-    #     print(q)
-    #     return Ht
-
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         city_name = 'Karachi'

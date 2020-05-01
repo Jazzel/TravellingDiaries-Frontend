@@ -213,7 +213,7 @@
 
                                 <div class="row">
                                     <div class="col">
-                                        <form id='postForm' method="POST"" enctype=" multipart/form-data">
+                                        <form id='postForm' method="POST" enctype="multipart/form-data">
                                             <div id="div_id_type" class="form-group form-inline pt-3 pl-4">
                                                 <div class="">
                                                     <label for="type" class="w-100">Available for
@@ -250,7 +250,18 @@
                                                         id="id_message"></textarea>
                                                 </div>
                                                 <p class="p-3" id="charsCurrentCountOfPost">O of 300 characters</p>
-
+                                                <div class="p-3">
+                                                    <div class="card">
+                                                        <div id="div_id_files" class="card-body">
+                                                            <h4 class="card-title">Add something ?</h4>
+                                                            <div class="form-group">
+                                                                <label for=""></label>
+                                                                <input type="file" multiple class="form-control-file"
+                                                                    name="files" id="id_files" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="p-3">
                                                 <input class="btn btn-primary w-100" type="submit" value="Post">

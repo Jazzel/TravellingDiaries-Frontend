@@ -1,3 +1,6 @@
+from django.utils.timesince import timesince
+from rest_framework import viewsets
+from rest_framework import status
 from .serializers import PostModelSerializer
 from rest_framework import permissions
 from post.models import Post
@@ -7,6 +10,9 @@ from rest_framework import filters
 from django.db.models import Q
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.urls import reverse_lazy
+
+from rest_framework.parsers import MultiPartParser
 
 
 class LikeToggleApiView(APIView):
@@ -56,8 +62,50 @@ class PostsListApiView(generics.ListAPIView):
 
 
 class PostsCreateApiView(generics.CreateAPIView):
+    queryset = Post.objects.all()
     serializer_class = PostModelSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def create(self, request, *args, **kwargs):
+    #     file_fields = list(request.FILES.keys())
+    #     # print(file_fields)
+    #     serializer = self.get_serializer(
+    #         data=request.data, file_fields=file_fields)
+    #     serializer.is_valid(raise_exception=True)
+    #     self.perform_create(serializer)
+    #     headers = self.get_success_headers(serializer.data)
+    #     return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
+
+    parser_classes = [MultiPartParser]
+
+    def post(self, request, format=None):
+        main_data = request.data
+        post = Post.objects.create(
+            user=self.request.user, message=main_data['message'], type=main_data['type'])
+        post.save()
+        post_data = {
+            'id': post.id,
+            'user': {
+                "username": self.request.user.username,
+                "first_name": self.request.user.first_name,
+                "last_name": self.request.user.last_name,
+                "email": self.request.user.email,
+                "url": reverse_lazy("user_profile", kwargs={'username': self.request.user.username})
+            },
+            'message': post.message,
+            'type': post.type,
+            'destination': '',
+            'timesince': timesince(post.created_at) + " ago",
+            'did_like': 0,
+            'liked': post.liked.count(),
+            'post_images': [
+
+            ]
+        }
+        print(request.data)
+        file_data = request.data.getlist(['files'])
+        # for file in file_data:
+        print('----------', file_data)
+        return Response(post_data)
