@@ -55,6 +55,7 @@
                 // },
                 method: "GET",
                 success: function (data) {
+                    console.log(data.results)
                     postsList = data.results;
                     if (data.next) {
                         nextPostUrl = data.next;

@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework import status
 from .serializers import PostModelSerializer
 from rest_framework import permissions
-from post.models import Post
+from post.models import Post, PostImage
 from .pagination import StandardResultPagination
 from rest_framework import generics
 from rest_framework import filters
@@ -85,6 +85,23 @@ class PostsCreateApiView(generics.CreateAPIView):
         post = Post.objects.create(
             user=self.request.user, message=main_data['message'], type=main_data['type'])
         post.save()
+        post_id = post.id
+        file_data = request.data.getlist('files')
+        response_files_data = []
+
+        for file in file_data:
+            post_image = PostImage.objects.create(
+                post=post,
+                image=file
+            )
+            file_dic = {
+                "id": post_image.id,
+                "image": '/media/post-files/' + str(file),
+                "post": post_id
+            }
+            response_files_data.append(file_dic)
+            post_image.save()
+
         post_data = {
             'id': post.id,
             'user': {
@@ -100,12 +117,8 @@ class PostsCreateApiView(generics.CreateAPIView):
             'timesince': timesince(post.created_at) + " ago",
             'did_like': 0,
             'liked': post.liked.count(),
-            'post_images': [
-
-            ]
+            'post_images': [file for file in response_files_data]
         }
-        print(request.data)
-        file_data = request.data.getlist(['files'])
-        # for file in file_data:
-        print('----------', file_data)
+        print(post_data)
+
         return Response(post_data)
