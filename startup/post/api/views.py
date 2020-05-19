@@ -41,9 +41,8 @@ class PostsListApiView(generics.ListAPIView):
 
     def get_queryset(self):
         requested_user = self.kwargs.get('username')
-        if requested_user:
-            queryset = Post.objects.filter(
-                user__username=requested_user).prefetch_related('post_images').order_by("-created_at")
+        if not requested_user:
+            queryset = Post.objects.all().prefetch_related('post_images').order_by("-created_at")
         else:
             im_following = self.request.user.profile.get_following()
             qs1 = Post.objects.filter(

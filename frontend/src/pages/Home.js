@@ -6,13 +6,14 @@ import "./Home.css";
 import { Card, CardHeader, CardBody, CardImg } from "reactstrap";
 import { Row, Col } from "reactstrap";
 import PostForm from "../components/PostForm";
+import WeatherCard from "../components/WeatherCard";
 
 const Home = () => {
   return (
     <React.Fragment>
       <Navigation />
       <SearchBar />
-      <Card>
+      <Card className="border-0">
         <CardHeader className="headImage"></CardHeader>
         <CardBody className="headCard w-100">
           <Row>
@@ -47,7 +48,7 @@ const Home = () => {
               <br />
               <br />
               <PostForm />
-              <div class="container-fluid p-0 m-0">
+              <div className="container-fluid p-0 m-0">
                 <h2 className="mt-5 ml-3">Selected: Attractions ........</h2>
                 <hr />
                 <h2 className="mt-5 ml-3">Trending near you ........</h2>
@@ -56,28 +57,7 @@ const Home = () => {
               </div>
             </Col>
             <Col className="col-3">
-              <Card className="border-0 shadow weatherCard">
-                <CardImg
-                  top
-                  src={
-                    "http://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/02n.png"
-                  }
-                  style={{ zIndex: -1 }}
-                />
-                <CardBody className="bg-light">
-                  <h4 className="card-title">
-                    <p>
-                      <img
-                        src="http://openweathermap.org/img/w/02n.png"
-                        alt="Image"
-                      />
-                      &nbsp; Weather - 30° C
-                    </p>
-                  </h4>
-                  <hr />
-                  <p>Few clouds - Good Evening !!</p>
-                </CardBody>
-              </Card>
+              <WeatherCard />
             </Col>
           </Row>
         </CardBody>
