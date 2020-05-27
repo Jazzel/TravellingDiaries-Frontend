@@ -1,9 +1,0 @@
-@import url("https://fonts.googleapis.com/css2?family=Acme&family=Pacifico&display=swap");
-
-* {
-  font-family: "Acme";
-}
-
-.styled-font {
-  font-family: "Pacifico" !important;
-}
