@@ -1,59 +1,70 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardBody, CardImg } from "reactstrap";
+import { Card,CardHeader, CardBody, CardImg, Row, Col, CardFooter } from "reactstrap";
 
 const WeatherCard = () => {
   const [weather, setWeather] = useState([]);
 
   useEffect(() => {
     const fetchWeatherData = async () => {
-      const city = "Karachi";
+      const city = 'Karachi';
       const response = await fetch(
-        "http://api.openweathermap.org/data/2.5/weather?q=" +
-          city +
-          "&units=metric&appid=ab1511265be0e3512b8a68c06a71358f"
+        "http://dataservice.accuweather.com/forecasts/v1/daily/5day/261158?apikey=sMXa6WnLgzFCBq8HQ7TCAwa0aVah0q7U&details=true&metric=true"
       );
-      const __response = await fetch(
-        "http://dataservice.accuweather.com/forecasts/v1/daily/5day/261158?apikey=sMXa6WnLgzFCBq8HQ7TCAwa0aVah0q7U&details=true"
-      );
-      const __responseData = await __response.json();
+      const responseData = await response.json();
 
-      console.log(__responseData);
-      // const responseData = await response.json();
-      // const weatherData = {
-      //   city: city,
-      //   temperature: responseData["main"]["temp"],
-      //   description: responseData["weather"][0]["description"],
-      //   icon: responseData["weather"][0]["icon"],
-      // };
-      // setWeather(weatherData);
+      console.log(responseData);
+      const time = 'Night';
+      const weatherData = {
+        city: city,
+        headLine: responseData["Headline"]['Text'],
+        iconPhrase: responseData["DailyForecasts"][0][time]['IconPhrase'],
+        maxTemperature: responseData["DailyForecasts"][0]['Temperature']["Maximum"]['Value'] + 'C',
+        minTemperature: responseData["DailyForecasts"][0]['Temperature']["Minimum"]['Value']+ 'C',
+        maxFeelsLike: responseData["DailyForecasts"][0]['RealFeelTemperature']["Maximum"]['Value'] + 'C',
+        minFeelsLike: responseData["DailyForecasts"][0]['RealFeelTemperature']["Minimum"]['Value']+ 'C',
+        windSpeed:responseData["DailyForecasts"][0][time]['Wind']['Speed']['Value'] + responseData["DailyForecasts"][0][time]['Wind']['Speed']['Unit'],
+        phrase: responseData["DailyForecasts"][0][time]['ShortPhrase'],
+        precipitationProbability:responseData["DailyForecasts"][0][time]['PrecipitationProbability'],
+        thunderstormProbability:responseData["DailyForecasts"][0][time]['ThunderstormProbability'],
+        icon: 'https://developer.accuweather.com/sites/default/files/'+responseData["DailyForecasts"][0][time]["Icon"]+'-s.png'
+      };
+      setWeather(weatherData);
     };
     fetchWeatherData();
   }, []);
 
+  const getYear = () => {
+    return new Date().getFullYear();
+}
+
   return (
     <Card className="border-0 shadow weatherCard">
-      <CardImg
-        top
-        src={
-          "http://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/" +
-          weather.icon +
-          ".png"
-        }
-        style={{ zIndex: -1 }}
-      />
-      <CardBody className="bg-light">
-        <h4 className="card-title">
-          <p>
-            <img src="http://openweathermap.org/img/w/02n.png" alt="Image" />
-            <img src="https://www.accuweather.com/images/weathericons/01n.png"  alt="Image" />
-            &nbsp; Weather - {weather.temperature}° C
-          </p>
-        </h4>
-        <hr />
-        <p style={{ textTransform: "capitalize" }}>
-          {weather.description} - Good Evening !!
-        </p>
+      <CardHeader className='border-0'>
+        <Row>
+          <Col className='col-8 p-3'>
+          <h3 className='text-white'>{weather.phrase}.</h3>
+          </Col>
+          <img src={weather.icon} className='weatherIcon' alt='weather' height='100' />
+
+        </Row>
+      </CardHeader>
+      <CardBody className='bg-light'>
+          <h3>{'Min: '+weather.minTemperature }</h3>
+  <h3>{'Max: '+ weather.maxTemperature}</h3>
+
+  <p>{weather.headLine}.</p>
+
+            <p>
+              Feels like: {weather.minFeelsLike +'~'+weather.maxFeelsLike}<br />
+              Wind speed: {weather.windSpeed } <br />
+              Precipitation Probability : {weather.precipitationProbability} % <br />
+              Thunderstorm Probability : {weather.thunderstormProbability} % <br />
+            </p>
+
       </CardBody>
+      <CardFooter className='border-0'>
+          <p className='text-white pl-2 pt-1 pb-0 m-0'>© {getYear()} AccuWeather, Inc.</p>
+      </CardFooter>
     </Card>
   );
 };

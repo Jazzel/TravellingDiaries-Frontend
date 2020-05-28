@@ -11,7 +11,7 @@ const PostForm = () => {
               className="rounded-circle"
               width="50"
               src="./../../public/assets/images/pp.jpeg"
-              alt="user-image"
+              alt="user"
             />
           </Col>
           <Col className="col ml-1">

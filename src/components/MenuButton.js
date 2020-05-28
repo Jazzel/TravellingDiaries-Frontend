@@ -9,7 +9,7 @@ const MenuButton = () => {
       <div className="cn-wrapper" id="cn-wrapper">
         <ul>
           <li>
-            <a href="#">
+            <a href="/">
               <p className="mt-2">
                 <i className="fa fa-hotel" aria-hidden="true"></i>
                 <span>Hotels</span>
@@ -17,7 +17,7 @@ const MenuButton = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/">
               <p className="mt-2">
                 <i className="fa fa-utensils" aria-hidden="true"></i>
                 <span>DineIns</span>
@@ -25,7 +25,7 @@ const MenuButton = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/">
               <p className="mt-2">
                 <i className="fa fa-plane-departure" aria-hidden="true"></i>
                 <span>Flights</span>
@@ -33,7 +33,7 @@ const MenuButton = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/">
               <p className="mt-2">
                 <i className="fa fa-train" aria-hidden="true"></i>
                 <span>Trains</span>
@@ -41,7 +41,7 @@ const MenuButton = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/">
               <p className="mt-2">
                 <i className="fa fa-bus" aria-hidden="true"></i>
                 <span>Buses</span>
@@ -49,7 +49,7 @@ const MenuButton = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/">
               <p className="mt-2">
                 <i className="fa fa-home" aria-hidden="true"></i>
                 <span>Rentals</span>
@@ -57,7 +57,7 @@ const MenuButton = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/">
               <p className="mt-2">
                 <i className="fa fa-plus" aria-hidden="true"></i>
                 <span>More</span>

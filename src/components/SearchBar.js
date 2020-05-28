@@ -6,9 +6,10 @@ import { Form, FormGroup, Input } from "reactstrap";
 const SearchBar = (props) => {
   return (
     <header>
-      <Navbar color="light" light expand="lg">
+      <Navbar className='d-none d-sm-none d-md-block' color="light" light expand="lg">
         <Container>
-          <Row>
+          <Row className='w-100 p-0 m-0'>
+            <Col className='col-6'>
             <Nav className="mr-auto" navbar>
               <NavItem className="active">
                 <NavLink href="#">Default : Attractions </NavLink>
@@ -17,13 +18,13 @@ const SearchBar = (props) => {
                 <NavLink href="#"> Last selected : Hotels</NavLink>
               </NavItem>
             </Nav>
-          </Row>
-          <Row className="w-50">
-            <Nav className="ml-auto w-100" navbar>
-              <Row className="w-100">
-                <Col className="p-0">
-                  <Form className="form-inline w-100 my-2 my-lg-0">
-                    <FormGroup className="m-0 w-75 ml-auto">
+            </Col>
+            <Col className='col-6'>
+            <Nav className="ml-auto w-100 pt-1" navbar>
+              <Row className='w-100'>
+                <Col className='col-md-12' >
+                  <Form className="form-inline float-left w-100 my-2 my-lg-0">
+                    <FormGroup className="m-0 w-100 pt-0">
                       <Input
                         type="text"
                         name=""
@@ -34,13 +35,9 @@ const SearchBar = (props) => {
                     </FormGroup>
                   </Form>
                 </Col>
-                <Col lg="4">
-                  <div className="border-left pt-2 pl-2 pr-0">
-                    Try a random place
-                  </div>
-                </Col>
               </Row>
             </Nav>
+            </Col>
           </Row>
         </Container>
       </Navbar>

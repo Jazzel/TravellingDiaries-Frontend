@@ -1,12 +1,13 @@
 import React from "react";
-import Navigation from "../containers/Navigation";
-import SearchBar from "../containers/SearchBar";
+import Navigation from "../components/Navigation";
+import SearchBar from "../components/SearchBar";
 import MenuButton from "../components/MenuButton";
 import "./Home.css";
 import { Card, CardHeader, CardBody, CardImg } from "reactstrap";
 import { Row, Col } from "reactstrap";
 import PostForm from "../components/PostForm";
 import WeatherCard from "../components/WeatherCard";
+import CityCard from "../components/CityCard";
 
 const Home = () => {
   return (
@@ -17,33 +18,10 @@ const Home = () => {
         <CardHeader className="headImage"></CardHeader>
         <CardBody className="headCard w-100">
           <Row>
-            <Col className="col-3">
-              <Card className="border-0 shadow locationCard">
-                <CardImg
-                  top
-                  src={
-                    "http://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/02n.png"
-                  }
-                  style={{ zIndex: -1 }}
-                />
-                <CardBody className="bg-light">
-                  <h4 className="card-title">
-                    <p>
-                      <i className="fa fa-map-marker-alt float-left"></i>
-                      &nbsp; Karachi, Sindh, Pakistan
-                    </p>
-                  </h4>
-                  <p>
-                    Featured destinations:
-                    <br />
-                    <span className="badge badge-dark">Destination 3</span>
-                    <span className="badge badge-dark">Destination 2</span>
-                    <span className="badge badge-dark">Destination 1</span>
-                  </p>
-                </CardBody>
-              </Card>
+            <Col className="col-lg-3 col-md-6 d-none d-sm-none d-md-block">
+              <CityCard />
             </Col>
-            <Col className="col-6">
+            <Col className="col d-md-none d-lg-block">
               <MenuButton />
               <br />
               <br />
@@ -56,8 +34,22 @@ const Home = () => {
                 <div className="p-0" id="post-section"></div>
               </div>
             </Col>
-            <Col className="col-3">
+            <Col className="col-lg-3 col-md-6 d-none d-sm-none d-md-block">
               <WeatherCard />
+            </Col>
+          </Row>
+          <Row className='d-none d-md-block d-lg-none'>
+            <br />
+            <br />
+          <Col className="col">
+              <PostForm />
+              <div className="container-fluid p-0 m-0">
+                <h2 className="mt-5 ml-3">Selected: Attractions ........</h2>
+                <hr />
+                <h2 className="mt-5 ml-3">Trending near you ........</h2>
+                <hr />
+                <div className="p-0" id="post-section"></div>
+              </div>
             </Col>
           </Row>
         </CardBody>

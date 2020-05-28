@@ -7,19 +7,19 @@ const Navigation = (props) => {
     <header>
       <Navbar color="light" light expand="lg">
         <Row className="w-100">
-          <Col lg="4">
+          <Col className='col-4 d-none d-sm-none d-md-block'>
             <Nav className="mr-auto w-100" navbar>
               <NavItem>
                 <NavLink href="/components/">New</NavLink>
               </NavItem>
             </Nav>
           </Col>
-          <Col lg="4">
-            <NavbarBrand className="w-100  text-center" href="/">
+          <Col className='col-md-4 col-sm-12 col-xs-12'>
+            <NavbarBrand className="w-100 text-center" href="/">
               <h3 className="styled-font">TravellingDiaries</h3>
             </NavbarBrand>
           </Col>
-          <Col lg="4">
+          <Col className='col-4 d-none d-sm-none d-md-block'>
             <Nav className="ml-auto float-right w-100" navbar>
               <NavItem>
                 <NavLink href="/components/"></NavLink>
