@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Card,CardHeader, CardBody, CardImg, Row, Col, CardFooter } from "reactstrap";
+import { Card,CardHeader, CardBody, Row, Col, CardFooter } from "reactstrap";
 
 const WeatherCard = () => {
   const [weather, setWeather] = useState([]);
 
   useEffect(() => {
+    const hours = new Date().getHours();
+    const isDayTime = hours > 6 && hours < 20;
+    let time = '';
+
+    if(isDayTime === true){
+      time = 'Day';
+    }
+    else{
+      time = 'Night';
+    }
+    
     const fetchWeatherData = async () => {
       const city = 'Karachi';
       const response = await fetch(
@@ -12,8 +23,6 @@ const WeatherCard = () => {
       );
       const responseData = await response.json();
 
-      console.log(responseData);
-      const time = 'Night';
       const weatherData = {
         city: city,
         headLine: responseData["Headline"]['Text'],

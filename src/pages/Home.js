@@ -3,7 +3,7 @@ import Navigation from "../components/Navigation";
 import SearchBar from "../components/SearchBar";
 import MenuButton from "../components/MenuButton";
 import "./Home.css";
-import { Card, CardHeader, CardBody, CardImg } from "reactstrap";
+import { Card, CardHeader, CardBody } from "reactstrap";
 import { Row, Col } from "reactstrap";
 import PostForm from "../components/PostForm";
 import WeatherCard from "../components/WeatherCard";
