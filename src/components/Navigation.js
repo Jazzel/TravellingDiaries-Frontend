@@ -22,7 +22,7 @@ const Navigation = (props) => {
           <Col className='col-4 d-none d-sm-none d-md-block'>
             <Nav className="ml-auto float-right w-100" navbar>
               <NavItem>
-                <NavLink href="/components/"></NavLink>
+                <NavLink href="/login">Login</NavLink>
               </NavItem>
             </Nav>
           </Col>

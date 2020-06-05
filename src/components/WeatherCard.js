@@ -22,6 +22,14 @@ const WeatherCard = () => {
         "http://dataservice.accuweather.com/forecasts/v1/daily/5day/261158?apikey=sMXa6WnLgzFCBq8HQ7TCAwa0aVah0q7U&details=true&metric=true"
       );
       const responseData = await response.json();
+        const icon = responseData["DailyForecasts"][0][time]["Icon"];
+        let link = '';
+      if(icon > 10){
+        link = 'https://developer.accuweather.com/sites/default/files/'
+      }
+      else{
+        link = 'https://developer.accuweather.com/sites/default/files/0'
+      }
 
       const weatherData = {
         city: city,
@@ -35,7 +43,7 @@ const WeatherCard = () => {
         phrase: responseData["DailyForecasts"][0][time]['ShortPhrase'],
         precipitationProbability:responseData["DailyForecasts"][0][time]['PrecipitationProbability'],
         thunderstormProbability:responseData["DailyForecasts"][0][time]['ThunderstormProbability'],
-        icon: 'https://developer.accuweather.com/sites/default/files/'+responseData["DailyForecasts"][0][time]["Icon"]+'-s.png'
+        icon: link+icon+'-s.png'
       };
       setWeather(weatherData);
     };

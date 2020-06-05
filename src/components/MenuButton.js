@@ -2,7 +2,7 @@ import React from "react";
 
 const MenuButton = () => {
   return (
-    <div className="component">
+    <div className="component" >
       <button className="cn-button" id="cn-button">
         <i className="fa fa-align-center" aria-hidden="true"></i>
       </button>

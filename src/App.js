@@ -6,7 +6,10 @@ import {
   Switch,
 } from "react-router-dom";
 import Home from "./pages/Home";
+import HomePage from "./pages/Index";
 import "./App.css";
+import Login from "./pages/Login";
+import Login1 from "./pages/Login1";
 
 const App = () => {
   return (
@@ -14,6 +17,15 @@ const App = () => {
       <Switch>
         <Route path="/" exact>
           <Home />
+        </Route>
+        <Route path="/home" exact>
+          <HomePage />
+        </Route>
+        <Route path="/login" exact>
+          <Login />
+        </Route>
+        <Route path="/logins" exact>
+          <Login1 />
         </Route>
         <Redirect to="/" />
       </Switch>

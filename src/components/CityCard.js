@@ -14,9 +14,6 @@ const CityCard = () => {
           <h3 className='text-white'>Welcome User <br /> Dave</h3>
           </Col>
           <i className="fa fa-user text-white float-left userIcon" style={{fontSize:65}}></i>
-
-          {/* <img src={weather.icon} className='weatherIcon' alt='weather'  /> */}
-
         </Row>
       </CardHeader>
                 <CardBody className="bg-light">
